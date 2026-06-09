@@ -29,7 +29,7 @@ const corsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins = [
       "https://www.galaxyhomesolutions.ca",
-      "https://galaxyreno.vercel.app",
+      "https://galaxyreno-git-main-deathstar606s-projects.vercel.app",
       "https://deathstar606.github.io",
       "http://localhost:3000",
     ];
