@@ -123,201 +123,349 @@ const AppointmentForm = () => {
       initial={{ x: 1000, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -1000, opacity: 0 }}
+      style={{ backgroundColor: "#f8f9fa", minHeight: "100vh" }}
     >
+      {/* Header Banner */}
+      <div
+        className="text-center py-5"
+        style={{
+          background: "linear-gradient(135deg, #00084c 0%, #0d1b6e 100%)",
+          color: "white",
+        }}
+      >
+        <Container>
+          <h1 className="fw-bold mb-2">Book an Appointment</h1>
+          <p
+            className="text-light mx-auto mb-0"
+            style={{ maxWidth: "650px", opacity: 0.9, fontSize: "1.05rem" }}
+          >
+            Tell us about your home improvement or repair project and get a quick, personalized consultation & quote.
+          </p>
+        </Container>
+      </div>
+
       <Container
         className="d-flex justify-content-center"
-        style={{ paddingTop: "5vh", marginBottom: "10rem" }}
+        style={{ marginTop: "-2.5rem", marginBottom: "5rem" }}
       >
-        <Form
-          onSubmit={handleSubmit}
-          style={{ overflow: "hidden", width: "100%" }}
+        <div
+          className="w-100 p-4 p-md-5 bg-white shadow-lg"
+          style={{
+            maxWidth: "850px",
+            borderRadius: "20px",
+            border: "1px solid #eef0f4",
+          }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key="details"
-              transition={{ duration: 0.5, type: "tween", ease: "easeIn" }}
-              initial={{ x: 1000, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -1000, opacity: 0 }}
-            >
-              <h3 className="text-center pb-4">Contact Information</h3>
-              <Row className="pt-4">
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="name">Name</Label>
-                    <Input
-                      type="text"
-                      name="name"
-                      id="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="phone">Phone</Label>
-                    <Input
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Row>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input
-                      type="email"
-                      name="email"
-                      id="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="address">Address</Label>
-                    <Input
-                      type="text"
-                      name="address"
-                      id="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Row>
-                <Col md={12}>
-                  <FormGroup>
-                    <Label for="description">Description</Label>
-                    <Input
-                      style={{ height: "100px" }}
-                      type="textarea"
-                      name="description"
-                      id="description"
-                      value={formData.description}
-                      onChange={handleChange}
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Row>
-                <Col md={12}>
-                  <FormGroup>
-                    <Label for="image">Upload Image</Label>
-                    <div className="custom-file">
-                      <Input
-                        type="file"
-                        className="custom-file-input"
-                        name="image"
-                        id="image"
-                        onChange={handleImageChange}
-                        accept="image/*"
-                      />
-                      <Label className="custom-file-label" for="image">
-                        Choose file
+          <Form onSubmit={handleSubmit}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key="details"
+                transition={{ duration: 0.4, type: "tween", ease: "easeOut" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+              >
+                <div className="border-bottom pb-3 mb-4 text-center text-md-start">
+                  <h3 className="fw-bold mb-1" style={{ color: "#00084c" }}>
+                    Project & Contact Information
+                  </h3>
+                  <p className="text-muted mb-0" style={{ fontSize: "0.92rem" }}>
+                    Please fill out the form below. We usually respond within a few hours.
+                  </p>
+                </div>
+
+                <Row className="gy-3">
+                  <Col md={6} xs={12}>
+                    <FormGroup>
+                      <Label for="name" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                        Full Name <span className="text-danger">*</span>
                       </Label>
-                    </div>
-                  </FormGroup>
-                </Col>
-              </Row>
-              {imagePreview && (
-                <Row className="mb-3">
-                  <Col md={12} className="text-center">
-                    <img
-                      src={imagePreview}
-                      alt="Preview"
-                      style={{
-                        maxWidth: "100%",
-                        height: "auto",
-                        borderRadius: "8px",
-                        marginTop: "10px",
-                      }}
-                    />
+                      <Input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="John Doe"
+                        className="py-2 px-3"
+                        style={{ borderRadius: "10px", borderColor: "#cbd5e1" }}
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col md={6} xs={12}>
+                    <FormGroup>
+                      <Label for="phone" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                        Phone Number <span className="text-danger">*</span>
+                      </Label>
+                      <Input
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        placeholder="(416) 123-4567"
+                        className="py-2 px-3"
+                        style={{ borderRadius: "10px", borderColor: "#cbd5e1" }}
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                      />
+                    </FormGroup>
                   </Col>
                 </Row>
-              )}
-              {isSubmitting && <p>Uploading image... {uploadProgress}%</p>}
-              <div
-                className="butt"
-                style={{
-                  display: "inline-block",
-                  opacity: isSubmitting ? 0.6 : 1,
-                  pointerEvents: isSubmitting ? "none" : "auto",
-                  cursor: isSubmitting ? "not-allowed" : "pointer",
-                }}
-                onClick={!isSubmitting ? handleSubmit : undefined}
-              >
-                {isSubmitting ? "Submitting..." : "Submit"}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </Form>
+
+                <Row className="gy-3">
+                  <Col md={6} xs={12}>
+                    <FormGroup>
+                      <Label for="email" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                        Email Address <span className="text-danger">*</span>
+                      </Label>
+                      <Input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="john@example.com"
+                        className="py-2 px-3"
+                        style={{ borderRadius: "10px", borderColor: "#cbd5e1" }}
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col md={6} xs={12}>
+                    <FormGroup>
+                      <Label for="address" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                        Service Address / Location <span className="text-danger">*</span>
+                      </Label>
+                      <Input
+                        type="text"
+                        name="address"
+                        id="address"
+                        placeholder="Street, City, Postal Code"
+                        className="py-2 px-3"
+                        style={{ borderRadius: "10px", borderColor: "#cbd5e1" }}
+                        value={formData.address}
+                        onChange={handleChange}
+                        required
+                      />
+                    </FormGroup>
+                  </Col>
+                </Row>
+
+                <Row className="gy-3">
+                  <Col md={12}>
+                    <FormGroup>
+                      <Label for="description" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                        Project Details & Description <span className="text-danger">*</span>
+                      </Label>
+                      <Input
+                        style={{ height: "120px", borderRadius: "10px", borderColor: "#cbd5e1" }}
+                        type="textarea"
+                        name="description"
+                        id="description"
+                        placeholder="Describe the service or repair needed (e.g., drywall repair, plumbing fixture, furniture assembly)..."
+                        className="p-3"
+                        value={formData.description}
+                        onChange={handleChange}
+                        required
+                      />
+                    </FormGroup>
+                  </Col>
+                </Row>
+
+                <Row className="gy-3">
+                  <Col md={12}>
+                    <FormGroup>
+                      <Label for="image" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                        Attach Photo (Optional)
+                      </Label>
+                      <div
+                        className="p-3 text-center"
+                        style={{
+                          border: "2px dashed #cbd5e1",
+                          borderRadius: "12px",
+                          backgroundColor: "#f8fafc",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <Input
+                          type="file"
+                          name="image"
+                          id="image"
+                          onChange={handleImageChange}
+                          accept="image/*"
+                          className="form-control mb-2"
+                          style={{ borderRadius: "8px" }}
+                        />
+                        <small className="text-muted">
+                          Upload clear pictures of the repair area or items to help us provide an accurate estimate.
+                        </small>
+                      </div>
+                    </FormGroup>
+                  </Col>
+                </Row>
+
+                {imagePreview && (
+                  <Row className="mb-4">
+                    <Col md={12} className="text-center">
+                      <div
+                        className="p-2 d-inline-block bg-light"
+                        style={{ borderRadius: "12px", border: "1px solid #e2e8f0" }}
+                      >
+                        <img
+                          src={imagePreview}
+                          alt="Preview"
+                          style={{
+                            maxHeight: "220px",
+                            maxWidth: "100%",
+                            objectFit: "contain",
+                            borderRadius: "8px",
+                          }}
+                        />
+                        <div className="mt-1">
+                          <small className="text-success fw-semibold">Photo Attached</small>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+                )}
+
+                {isSubmitting && (
+                  <div className="alert alert-info py-2 px-3 text-center my-3" style={{ borderRadius: "10px" }}>
+                    Uploading details... {uploadProgress > 0 ? `${uploadProgress}%` : "Processing"}
+                  </div>
+                )}
+
+                <div className="mt-4 pt-2 text-center text-md-start">
+                  <button
+                    type="submit"
+                    className="butt text-white fw-bold px-5 py-2"
+                    style={{
+                      backgroundColor: "#00084c",
+                      borderColor: "#00084c",
+                      opacity: isSubmitting ? 0.6 : 1,
+                      cursor: isSubmitting ? "not-allowed" : "pointer",
+                      width: "100%",
+                      maxWidth: "280px",
+                    }}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Send Request"}
+                  </button>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </Form>
+        </div>
       </Container>
-      <div style={{ backgroundColor: "#00084c" }}>
-        <Container style={{ minWidth: "65vw" }}>
-          <Row className="pt-5 pb-4" style={{ padding: "1rem" }}>
+
+      {/* Contact Info Feature Section */}
+      <div style={{ backgroundColor: "#00084c", color: "white" }} className="py-5">
+        <Container style={{ maxWidth: "88%" }}>
+          <Row className="gy-4 align-items-center">
             <Col
-              md={6}
+              lg={6}
+              md={12}
               className="d-flex justify-content-center align-items-center"
             >
-              <CardImg
-                className="mb-4"
-                src={contact}
+              <div
                 style={{
-                  objectFit: "cover",
                   width: "100%",
-                  borderRadius: "15px",
+                  maxHeight: "360px",
+                  overflow: "hidden",
+                  borderRadius: "18px",
+                  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.3)",
                 }}
-              ></CardImg>
+              >
+                <CardImg
+                  src={contact}
+                  alt="Galaxy Home Solutions Team"
+                  style={{
+                    objectFit: "cover",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </div>
             </Col>
-            <Col md={6} className="d-flex align-items-center">
-              <div>
-                <p className="text-white">
-                  Have a question, need a quote, or ready to book a service?
-                  We’re here to help! At Galaxy Home Solutions, we take pride in
-                  fast responses, clear communication, and reliable
-                  service—every time.
+            <Col lg={6} md={12}>
+              <div className="ps-lg-4">
+                <h3 className="fw-bold mb-3" style={{ color: "#ffffff" }}>
+                  Need Immediate Assistance?
+                </h3>
+                <p className="text-light" style={{ opacity: 0.9, lineHeight: "1.7", fontSize: "0.98rem" }}>
+                  Have an urgent question, need a quote right away, or prefer speaking directly with our craftsman? We take pride in rapid responses, clear transparent communication, and dependable service across the Greater Toronto Area.
                 </p>
-                <div className="mt-5">
+                <div className="mt-4 pt-2">
                   <a
-                    href="tel:416123-4567"
+                    href="tel:4169976627"
                     style={{ color: "white", textDecoration: "none" }}
+                    className="d-flex align-items-center gap-3 mb-3 p-2 rounded"
                   >
-                    <div className="d-flex align-items-center gap-2 mb-2">
-                      <span className="mr-2">Phone/Text:</span>
-                      <span className="fw-semibold">416 123-4567</span>
+                    <div
+                      style={{
+                        width: "42px",
+                        height: "42px",
+                        borderRadius: "50%",
+                        backgroundColor: "#b61414",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <FaPhone size={18} />
+                    </div>
+                    <div>
+                      <div className="small text-light" style={{ opacity: 0.8 }}>Call or Text</div>
+                      <div className="fw-bold fs-6">416 997 6627 / 647 606 2540</div>
                     </div>
                   </a>
+
                   <a
                     href="mailto:solutionsgalaxyhome@gmail.com"
-                    target="blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{ color: "white", textDecoration: "none" }}
+                    className="d-flex align-items-center gap-3 mb-3 p-2 rounded"
                   >
-                    <div className="d-flex align-items-center gap-2 mb-2 pt-2">
-                      <FaEnvelope className="mr-2" size={20} />
-                      <span className="fw-semibold">
-                        solutionsgalaxyhome@gmail.com
-                      </span>
+                    <div
+                      style={{
+                        width: "42px",
+                        height: "42px",
+                        borderRadius: "50%",
+                        backgroundColor: "#b61414",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <FaEnvelope size={18} />
+                    </div>
+                    <div>
+                      <div className="small text-light" style={{ opacity: 0.8 }}>Email Inquiry</div>
+                      <div className="fw-bold fs-6 text-break">solutionsgalaxyhome@gmail.com</div>
                     </div>
                   </a>
-                  <p className="text-white pt-2">
-                    📍 Service Area: Proudly serving Toronto, the GTA, and
-                    surrounding areas.
-                  </p>
-                  <p className="text-white">Hours: Available 7 days a week</p>
+
+                  <div className="d-flex align-items-center gap-3 p-2 rounded">
+                    <div
+                      style={{
+                        width: "42px",
+                        height: "42px",
+                        borderRadius: "50%",
+                        backgroundColor: "rgba(255, 255, 255, 0.15)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <FaMapMarkerAlt size={18} className="text-light" />
+                    </div>
+                    <div>
+                      <div className="small text-light" style={{ opacity: 0.8 }}>Service Area</div>
+                      <div className="fw-bold fs-6">Scarborough, Toronto & GTA (7 Days a Week)</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Col>

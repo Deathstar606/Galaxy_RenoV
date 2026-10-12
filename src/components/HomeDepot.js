@@ -224,20 +224,9 @@ function ToolDeats({ deats, handleHide }) {
                 <Col
                   md={6}
                   xs={12}
-                  className="d-flex align-items-center justify-content-center mb-4 mb-md-0"
+                  className="d-flex align-items-center justify-content-center mb-3 mb-md-0"
                 >
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "380px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      backgroundColor: "#f8f9fa",
-                      borderRadius: "16px",
-                      padding: "20px",
-                    }}
-                  >
+                  <div className="modal-tool-img-container">
                     <CardImg
                       style={{
                         maxWidth: "100%",
@@ -397,20 +386,10 @@ function ToolDeats({ deats, handleHide }) {
             <Row className="align-items-center">
               <Col
                 md={6}
-                className="d-flex align-items-center justify-content-center mb-4 mb-md-0"
+                xs={12}
+                className="d-flex align-items-center justify-content-center mb-3 mb-md-0"
               >
-                <div
-                  style={{
-                    width: "100%",
-                    height: "360px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: "#f8f9fa",
-                    borderRadius: "16px",
-                    padding: "20px",
-                  }}
-                >
+                <div className="modal-tool-img-container">
                   <CardImg
                     src={baseUrl + deats.image}
                     alt={deats.name}
