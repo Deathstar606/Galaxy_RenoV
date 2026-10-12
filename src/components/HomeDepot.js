@@ -29,6 +29,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import MediaQuery from "react-responsive";
 
 function ToolDeats({ deats, handleHide }) {
@@ -164,11 +165,11 @@ function ToolDeats({ deats, handleHide }) {
           email: updatedFormData.email,
           message: `A reservation for ${deats.name} has been confirmed. The requested duration is ${updatedFormData.duration}.`,
         });
-
-        console.log("Reservation successful:", response.data);
       })
       .then(() => {
-        alert("✅ Reservation complete! A confirmation email has been sent.");
+        alert(
+          "✅ Reservation complete! A confirmation email has been sent. Refresh the page to see your reservation in the 'My Rentals' section.",
+        );
       })
       .catch((error) => {
         console.error("Error processing request:", error);
@@ -188,24 +189,30 @@ function ToolDeats({ deats, handleHide }) {
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="d-flex justify-content-center m-5"
-        initial={{ opacity: 0, y: -500 }}
+        className="d-flex justify-content-center m-3 m-md-5"
+        initial={{ opacity: 0, y: -400 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -500 }}
-        transition={{ duration: 0.25, delay: 0.25 }}
+        exit={{ opacity: 0, y: -400 }}
+        transition={{ duration: 0.3 }}
       >
-        <Container className="homed_modal_container">
+        <Container
+          className="homed_modal_container position-relative shadow-lg"
+          style={{ borderRadius: "20px" }}
+        >
           <button
             style={{
               position: "absolute",
-              top: "0px",
-              right: "10px",
+              top: "12px",
+              right: "18px",
               background: "transparent",
               border: "none",
-              fontSize: "40px",
-              color: "white",
+              fontSize: "36px",
+              color: "#333",
+              lineHeight: 1,
               cursor: "pointer",
+              zIndex: 10,
             }}
+            aria-label="Close"
             onClick={handleHide}
           >
             &times;
@@ -213,63 +220,102 @@ function ToolDeats({ deats, handleHide }) {
 
           {currentPanel === "1st" && (
             <>
-              <Row>
+              <Row className="align-items-center">
                 <Col
                   md={6}
                   xs={12}
-                  className="d-flex align-items-center justify-content-center mb-3"
+                  className="d-flex align-items-center justify-content-center mb-4 mb-md-0"
                 >
-                  <CardImg
+                  <div
                     style={{
                       width: "100%",
-                      height: "50vh",
-                      objectFit: "contain",
+                      height: "380px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      backgroundColor: "#f8f9fa",
+                      borderRadius: "16px",
+                      padding: "20px",
                     }}
-                    src={baseUrl + deats.image}
-                  />
+                  >
+                    <CardImg
+                      style={{
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        objectFit: "contain",
+                      }}
+                      src={baseUrl + deats.image}
+                      alt={deats.name}
+                    />
+                  </div>
                 </Col>
                 <Col
                   md={6}
                   xs={12}
                   style={{
-                    border: "1px solid #ccc",
-                    borderRadius: "10px",
-                    padding: "15px",
+                    backgroundColor: "#fbfbfb",
+                    border: "1px solid #e2e8f0",
+                    borderRadius: "16px",
+                    padding: "25px",
                   }}
                 >
-                  <h3>{deats.name}</h3>
-                  <p>{deats.description}</p>
+                  <h3
+                    style={{
+                      color: "#00084c",
+                      fontWeight: "700",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    {deats.name}
+                  </h3>
+                  <p
+                    className="text-muted"
+                    style={{ lineHeight: "1.6", fontSize: "0.95rem" }}
+                  >
+                    {deats.description}
+                  </p>
                   <div
+                    className="mb-3"
                     style={{
                       overflowX: "auto",
                       whiteSpace: "nowrap",
                       scrollbarWidth: "none",
                     }}
                   >
-                    <Table>
+                    <Table
+                      bordered
+                      hover
+                      responsive
+                      className="mb-0 text-center"
+                      style={{ borderRadius: "10px", overflow: "hidden" }}
+                    >
                       <thead
                         style={{ backgroundColor: "#00084c", color: "#ffffff" }}
                       >
                         <tr>
-                          <th>4 Hour</th>
-                          <th>1 Day</th>
-                          <th>1 Week</th>
-                          <th>4 Weeks</th>
+                          <th className="py-2">4 Hour</th>
+                          <th className="py-2">1 Day</th>
+                          <th className="py-2">1 Week</th>
+                          <th className="py-2">4 Weeks</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <tr style={{ fontWeight: "600", color: "#2d3748" }}>
                           {deats.prices.map((price, index) => (
-                            <td key={index}>{price} TK</td>
+                            <td key={index} className="py-2">
+                              {price} TK
+                            </td>
                           ))}
                         </tr>
                       </tbody>
                     </Table>
                   </div>
-                  <div className="mb-1 button_container">
+                  <div className="mb-2 button_container d-flex flex-wrap gap-2">
                     <Dropdown isOpen={dropdownOpen1} toggle={toggleDropdown1}>
-                      <DropdownToggle caret className="butt">
-                        Duration
+                      <DropdownToggle caret className="butt m-1">
+                        {formData.duration
+                          ? formData.duration
+                          : "Select Duration"}
                       </DropdownToggle>
                       <DropdownMenu>
                         {["4 Hour", "1 Day", "1 Week", "4 Weeks"].map(
@@ -289,8 +335,10 @@ function ToolDeats({ deats, handleHide }) {
                     </Dropdown>
 
                     <Dropdown isOpen={dropdownOpen2} toggle={toggleDropdown2}>
-                      <DropdownToggle caret className="butt">
-                        Pickup Method
+                      <DropdownToggle caret className="butt m-1">
+                        {formData.pickupMethod
+                          ? formData.pickupMethod
+                          : "Select Pickup"}
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem
@@ -310,10 +358,27 @@ function ToolDeats({ deats, handleHide }) {
                       </DropdownMenu>
                     </Dropdown>
                   </div>
-                  <div className="ml-2 mt-4 mb-2">
-                    <p className="text-muted">Duration: {formData.duration}</p>
-                    <p className="text-muted">
-                      Pick up method: {formData.pickupMethod}
+                  <div
+                    className="p-3 my-3"
+                    style={{
+                      backgroundColor: "#ffffff",
+                      borderRadius: "10px",
+                      border: "1px dashed #cbd5e0",
+                    }}
+                  >
+                    <p
+                      className="mb-1 text-muted"
+                      style={{ fontSize: "0.9rem" }}
+                    >
+                      <strong>Duration:</strong>{" "}
+                      {formData.duration || "Not selected"}
+                    </p>
+                    <p
+                      className="mb-0 text-muted"
+                      style={{ fontSize: "0.9rem" }}
+                    >
+                      <strong>Pick up method:</strong>{" "}
+                      {formData.pickupMethod || "Not selected"}
                     </p>
                   </div>
                   <div
@@ -329,21 +394,61 @@ function ToolDeats({ deats, handleHide }) {
           )}
 
           {currentPanel === "2nd" && (
-            <Row>
+            <Row className="align-items-center">
               <Col
                 md={6}
-                className="d-flex align-items-center justify-content-center mb-3"
+                className="d-flex align-items-center justify-content-center mb-4 mb-md-0"
               >
-                <CardImg src={baseUrl + deats.image} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "360px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#f8f9fa",
+                    borderRadius: "16px",
+                    padding: "20px",
+                  }}
+                >
+                  <CardImg
+                    src={baseUrl + deats.image}
+                    alt={deats.name}
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
               </Col>
               <Col md={6}>
-                <h4 className="mb-4">Reservation Summary</h4>
-                <p>Pickup Method: {formData.pickupMethod}</p>
-                <p>Duration: {formData.duration}</p>
-                <p>Price: {formData.price} TK</p>
+                <h4
+                  className="mb-3"
+                  style={{ color: "#00084c", fontWeight: "700" }}
+                >
+                  Reservation Summary
+                </h4>
+                <div
+                  className="p-3 mb-3"
+                  style={{ backgroundColor: "#f8f9fa", borderRadius: "12px" }}
+                >
+                  <p className="mb-1">
+                    <strong>Tool:</strong> {deats.name}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Pickup Method:</strong> {formData.pickupMethod}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Duration:</strong> {formData.duration}
+                  </p>
+                  <p className="mb-0">
+                    <strong>Price:</strong> {formData.price} TK
+                  </p>
+                </div>
 
                 <Row className="mb-2">
-                  <Col>
+                  <Col md={6} xs={12} className="mb-2 mb-md-0">
                     <input
                       type="text"
                       placeholder="Enter Name"
@@ -352,7 +457,7 @@ function ToolDeats({ deats, handleHide }) {
                       onChange={(e) => handleChange("name", e.target.value)}
                     />
                   </Col>
-                  <Col>
+                  <Col md={6} xs={12}>
                     <input
                       type="text"
                       placeholder="Enter Phone Number"
@@ -377,80 +482,90 @@ function ToolDeats({ deats, handleHide }) {
 
                 {formData.pickupMethod === "Self Pickup" ? (
                   <>
-                    <p>Delivery Charge: $0</p>
-                    <div
-                      className="butt"
-                      style={{ display: "inline-block" }}
-                      onClick={handleSubmit}
-                    >
-                      Confirm Reservation
-                    </div>
-                    <div
-                      className="butt"
-                      style={{ display: "inline-block" }}
-                      onClick={handleRrev}
-                    >
-                      Go Back
+                    <p className="text-muted">
+                      <strong>Delivery Charge:</strong> $0
+                    </p>
+                    <div className="d-flex flex-wrap gap-2">
+                      <div
+                        className="butt"
+                        style={{ display: "inline-block" }}
+                        onClick={handleSubmit}
+                      >
+                        Confirm Reservation
+                      </div>
+                      <div
+                        className="butt"
+                        style={{ display: "inline-block" }}
+                        onClick={handleRrev}
+                      >
+                        Go Back
+                      </div>
                     </div>
                   </>
                 ) : (
                   <>
-                    <div
-                      className="butt"
-                      style={{ display: "inline-block" }}
-                      onClick={() => {
-                        handleChange("charge", 10);
-                        handleChange("location", "Ottawa");
-                      }}
-                    >
-                      Ottawa (+$10)
-                    </div>
-                    <div
-                      className="butt"
-                      style={{ display: "inline-block" }}
-                      onClick={() => {
-                        handleChange("charge", 15);
-                        handleChange("location", "Toronto");
-                      }}
-                    >
-                      Toronto (+$15)
-                    </div>
-                    <div
-                      className="butt"
-                      style={{ display: "inline-block" }}
-                      onClick={() => {
-                        handleChange("charge", 20);
-                        handleChange("location", "Quebec");
-                      }}
-                    >
-                      Quebec (+$20)
+                    <div className="d-flex flex-wrap gap-2 mb-2">
+                      <div
+                        className="butt"
+                        style={{ display: "inline-block" }}
+                        onClick={() => {
+                          handleChange("charge", 10);
+                          handleChange("location", "Ottawa");
+                        }}
+                      >
+                        Ottawa (+$10)
+                      </div>
+                      <div
+                        className="butt"
+                        style={{ display: "inline-block" }}
+                        onClick={() => {
+                          handleChange("charge", 15);
+                          handleChange("location", "Toronto");
+                        }}
+                      >
+                        Toronto (+$15)
+                      </div>
+                      <div
+                        className="butt"
+                        style={{ display: "inline-block" }}
+                        onClick={() => {
+                          handleChange("charge", 20);
+                          handleChange("location", "Quebec");
+                        }}
+                      >
+                        Quebec (+$20)
+                      </div>
                     </div>
                     <div
                       style={{ cursor: "pointer", display: "inline-block" }}
-                      className="mt-2 mb-2 butt"
+                      className="mt-1 mb-2 butt"
                       onClick={findMyLocation}
                     >
-                      Find My Location <CiLocationOff />
+                      Find My Location <CiLocationOff className="ms-1" />
                     </div>
-                    <p>Delivery Charge: ${formData.charge}</p>
-                    <div
-                      className="butt"
-                      style={{
-                        display: "inline-block",
-                        opacity: isSubmitting ? 0.6 : 1,
-                        pointerEvents: isSubmitting ? "none" : "auto",
-                        cursor: isSubmitting ? "not-allowed" : "pointer",
-                      }}
-                      onClick={!isSubmitting ? handleSubmit : undefined}
-                    >
-                      {isSubmitting ? "Submitting..." : "Confirm Reservation"}
-                    </div>
-                    <div
-                      className="butt"
-                      style={{ display: "inline-block" }}
-                      onClick={handleRrev}
-                    >
-                      Go Back
+                    <p className="text-muted">
+                      <strong>Delivery Charge:</strong> ${formData.charge}
+                    </p>
+                    <div className="d-flex flex-wrap gap-2">
+                      <div
+                        className="butt"
+                        style={{
+                          display: "inline-block",
+                          opacity: isSubmitting ? 0.6 : 1,
+                          pointerEvents: isSubmitting ? "none" : "auto",
+                          cursor: isSubmitting ? "not-allowed" : "pointer",
+                        }}
+                        onClick={!isSubmitting ? handleSubmit : undefined}
+                      >
+                        {isSubmitting ? "Submitting..." : "Confirm Reservation"}
+                      </div>
+                      <div
+                        className="butt"
+                        style={{ display: "inline-block" }}
+                        onClick={handleRrev}
+                      >
+                        Go Back
+                      </div>
                     </div>
                   </>
                 )}
@@ -474,6 +589,27 @@ function HomeD({ tools }) {
     setSelectedTool(null);
   };
 
+  const requirementCards = [
+    {
+      img: icon3,
+      alt: "Rental return policy",
+      title: "Return Policy",
+      desc: "Rentals must be returned to the same location.",
+    },
+    {
+      img: icon2,
+      alt: "Credit card requirement",
+      title: "Security Deposit",
+      desc: "Have a valid credit card for a deposit at the time of pick-up.",
+    },
+    {
+      img: icon1,
+      alt: "Age and ID requirement",
+      title: "Valid Identification",
+      desc: "Must be at least 18 years old with government-issued photo ID.",
+    },
+  ];
+
   return (
     <motion.div
       className="pb-5"
@@ -482,125 +618,226 @@ function HomeD({ tools }) {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -1000, opacity: 0 }}
     >
-      <h1 className="text-center mt-5 mb-2">
-        <StaggeredText text={"Tool Rental"} />
-      </h1>
-      <h6 className="text-center pb-4 mb-4">Sub Heading for Tool Rental</h6>
+      <div className="text-center mt-5 mb-4">
+        <h1 className="fw-bold mb-2">
+          <StaggeredText text={"Tool Rental"} />
+        </h1>
+        <p
+          className="text-muted mx-auto"
+          style={{ maxWidth: "600px", fontSize: "1.05rem" }}
+        >
+          Premium equipment and tools ready for your DIY home improvement
+          projects
+        </p>
+      </div>
+
       <Container className="tool_container">
+        {/* Requirements Section */}
         <MediaQuery minWidth={640}>
-          <Row
-            className="pt-4 mt-4"
-            style={{ justifyContent: "center", margin: "0" }}
-          >
-            <Col md={4} xs={6}>
-              <div className="d-flex justify-content-center">
-                <CardImg src={icon3} style={{ width: "65%" }}></CardImg>
-              </div>
-              <p className="text-center m-0">
-                Rentals must be returned to the same location
-              </p>
-            </Col>
-            <Col md={4} xs={6}>
-              <div className="d-flex justify-content-center">
-                <CardImg src={icon2} style={{ width: "65%" }}></CardImg>
-              </div>
-              <p className="text-center m-0">
-                Have a valid credit card for the a deposit at the time of
-                pick-up
-              </p>
-            </Col>
-            <Col md={4} xs={6}>
-              <div className="d-flex justify-content-center">
-                <CardImg src={icon1} style={{ width: "65%" }}></CardImg>
-              </div>
-              <p className="text-center m-0">Must be at least 18 years old</p>
-              <p className="text-center m-0 pt-2">
-                Have a government-issued photo ID that is valid at the time of
-                rental
-              </p>
-            </Col>
+          <Row className="py-4 justify-content-center g-4">
+            {requirementCards.map((req, idx) => (
+              <Col md={4} xs={12} key={idx} className="d-flex">
+                <div
+                  className="w-100 p-4 text-center d-flex flex-column align-items-center justify-content-start"
+                  style={{
+                    backgroundColor: "#fbfbfd",
+                    border: "1px solid #eef0f4",
+                    borderRadius: "18px",
+                    boxShadow: "0 4px 14px rgba(0, 0, 0, 0.04)",
+                    transition: "transform 0.25s ease",
+                  }}
+                >
+                  <div
+                    className="d-flex justify-content-center align-items-center mb-3"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      backgroundColor: "#ffffff",
+                      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.06)",
+                      padding: "10px",
+                    }}
+                  >
+                    <CardImg
+                      src={req.img}
+                      alt={req.alt}
+                      style={{
+                        maxWidth: "75%",
+                        maxHeight: "75%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </div>
+                  <h6
+                    style={{
+                      fontWeight: "700",
+                      color: "#00084c",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    {req.title}
+                  </h6>
+                  <p
+                    className="text-muted mb-0"
+                    style={{ fontSize: "0.92rem", lineHeight: "1.5" }}
+                  >
+                    {req.desc}
+                  </p>
+                </div>
+              </Col>
+            ))}
           </Row>
         </MediaQuery>
-        <MediaQuery maxWidth={640}>
-          <Swiper
-            modules={[Autoplay]}
-            spaceBetween={20}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-          >
-            <SwiperSlide className="p-2">
-              <CardImg src={icon3} alt="Rental return policy" />
-              <p className="mt-2 text-center">
-                Rentals must be returned to the same location
-              </p>
-            </SwiperSlide>
-            <SwiperSlide className="p-2">
-              <CardImg src={icon2} alt="Credit card requirement" />
-              <p className="mt-2 text-center">
-                Have a valid credit card for a deposit at the time of pick-up
-              </p>
-            </SwiperSlide>
-            <SwiperSlide className="p-2">
-              <CardImg src={icon1} alt="Age and ID requirement" />
-              <p className="mt-2 text-center">Must be at least 18 years old</p>
-              <p className="mt-1 text-center">
-                Have a government-issued photo ID that is valid at the time of
-                rental
-              </p>
-            </SwiperSlide>
-          </Swiper>
+
+        <MediaQuery maxWidth={639}>
+          <div className="py-3">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={16}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 3500 }}
+              style={{ paddingBottom: "35px" }}
+            >
+              {requirementCards.map((req, idx) => (
+                <SwiperSlide key={idx} className="pb-5">
+                  <div
+                    className="p-4 text-center d-flex flex-column align-items-center"
+                    style={{
+                      backgroundColor: "#fbfbfd",
+                      border: "1px solid #eef0f4",
+                      borderRadius: "18px",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+                    }}
+                  >
+                    <div
+                      className="d-flex justify-content-center align-items-center mb-3"
+                      style={{
+                        width: "90px",
+                        height: "90px",
+                        borderRadius: "50%",
+                        backgroundColor: "#ffffff",
+                        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.06)",
+                        padding: "10px",
+                      }}
+                    >
+                      <CardImg
+                        src={req.img}
+                        alt={req.alt}
+                        style={{
+                          maxWidth: "75%",
+                          maxHeight: "75%",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+                    <h6
+                      style={{
+                        fontWeight: "700",
+                        color: "#00084c",
+                        marginBottom: "6px",
+                      }}
+                    >
+                      {req.title}
+                    </h6>
+                    <p
+                      className="text-muted mb-0"
+                      style={{ fontSize: "0.9rem", lineHeight: "1.5" }}
+                    >
+                      {req.desc}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </MediaQuery>
-        <h1 className="p-5 text-center">Rent the product</h1>
-        <Row className="g-1" style={{ justifyContent: "center", margin: "0" }}>
+
+        {/* Section Heading */}
+        <div className="text-center pt-5 pb-3">
+          <h2 className="fw-bold" style={{ color: "#00084c" }}>
+            Rent the Product
+          </h2>
+          <p className="text-muted" style={{ fontSize: "0.95rem" }}>
+            Select from our catalog of professional-grade tools
+          </p>
+        </div>
+
+        {/* Product Grid */}
+        <Row className="g-4 justify-content-center">
           {tools.tool.map((tl, index) => (
             <Col
-              md={3}
+              lg={3}
+              md={4}
+              sm={6}
               xs={12}
               key={index}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "2.5px",
-                margin: "10px",
-              }}
+              className="d-flex align-items-stretch"
             >
               <motion.div
-                whileHover={{ scale: 1.05 }} // Scales the card a little on hover
-                transition={{ type: "spring", stiffness: 300 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="w-100 d-flex"
                 style={{
-                  width: "100%", // Full width within Col
-                  borderRadius: "15px",
+                  borderRadius: "18px",
                   overflow: "hidden",
-                  cursor: "pointer",
-                  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                  boxShadow: "0 8px 20px rgba(0, 0, 0, 0.06)",
                 }}
               >
-                <Card style={{ width: "100%" }}>
-                  <CardImg
-                    top
-                    src={baseUrl + tl.image}
-                    alt={tl.name}
+                <Card
+                  className="w-100 border-0 d-flex flex-column"
+                  style={{ borderRadius: "18px", overflow: "hidden" }}
+                >
+                  <div
                     style={{
-                      borderRadius: "15px 15px 0 0",
-                      margin: "10px",
-                      objectFit: "contain",
-                      height: "200px",
+                      height: "210px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      backgroundColor: "#f8f9fa",
+                      padding: "16px",
                     }}
-                  />
-                  <CardBody
-                    className="home-butt"
-                    style={{ backgroundColor: "#00084c" }}
                   >
-                    <CardText className="text-center text-white p-2">
+                    <CardImg
+                      top
+                      src={baseUrl + tl.image}
+                      alt={tl.name}
+                      style={{
+                        maxHeight: "100%",
+                        maxWidth: "100%",
+                        objectFit: "contain",
+                        transition: "transform 0.3s ease",
+                      }}
+                    />
+                  </div>
+                  <CardBody
+                    className="home-butt d-flex flex-column justify-content-between p-3"
+                    style={{
+                      backgroundColor: "#00084c",
+                      flexGrow: 1,
+                    }}
+                  >
+                    <CardText
+                      className="text-center text-white mb-3"
+                      style={{
+                        fontWeight: "600",
+                        fontSize: "1rem",
+                        minHeight: "2.8rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
                       {tl.name}
                     </CardText>
                     <div
-                      className="butt text-center"
+                      className="butt text-center w-100 m-0"
                       style={{
                         whiteSpace: "nowrap",
                         textOverflow: "ellipsis",
                         overflow: "hidden",
+                        fontSize: "0.9rem",
+                        padding: "8px 14px",
                       }}
                       onClick={() => handleShow(tl)}
                     >
