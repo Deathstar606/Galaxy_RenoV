@@ -598,12 +598,20 @@ function HomeD({ tools }) {
       exit={{ x: -1000, opacity: 0 }}
     >
       <div className="text-center mt-5 mb-4">
-        <h1 className="fw-bold mb-2">
+        <h1
+          className="mb-2"
+          style={{
+            fontSize: "clamp(2rem, 3.8vw, 2.75rem)",
+            fontWeight: "800",
+            letterSpacing: "-0.02em",
+            color: "#00084c",
+          }}
+        >
           <StaggeredText text={"Tool Rental"} />
         </h1>
         <p
-          className="text-muted mx-auto"
-          style={{ maxWidth: "600px", fontSize: "1.05rem" }}
+          className="text-muted mx-auto px-3"
+          style={{ maxWidth: "600px", fontSize: "clamp(0.95rem, 1.3vw, 1.05rem)", lineHeight: "1.55" }}
         >
           Premium equipment and tools ready for your DIY home improvement
           projects
@@ -734,7 +742,14 @@ function HomeD({ tools }) {
 
         {/* Section Heading */}
         <div className="text-center pt-5 pb-3">
-          <h2 className="fw-bold" style={{ color: "#00084c" }}>
+          <h2
+            style={{
+              color: "#00084c",
+              fontWeight: "800",
+              fontSize: "clamp(1.75rem, 3vw, 2.3rem)",
+              letterSpacing: "-0.015em",
+            }}
+          >
             Rent the Product
           </h2>
           <p className="text-muted" style={{ fontSize: "0.95rem" }}>

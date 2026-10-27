@@ -34,25 +34,31 @@ function Testi() {
     ];
 
     return (
-        <div style={{ backgroundColor: "#00084c", color: "white", padding: "2rem", marginTop: "2rem" }}>
+        <div style={{ backgroundColor: "#00084c", color: "white", padding: "3rem 1.5rem", marginTop: "3rem" }}>
+            <div className="text-center mb-2" style={{ color: "#f1593a", fontSize: "0.82rem", fontWeight: "700", letterSpacing: "2.5px", textTransform: "uppercase" }}>
+                Testimonials
+            </div>
+            <h2 className="text-center mb-3" style={{ color: "#ffffff", fontSize: "clamp(1.8rem, 3.2vw, 2.5rem)", fontWeight: "800", letterSpacing: "-0.02em" }}>
+                What Our Clients Say
+            </h2>
             <Swiper
                 modules={[Navigation]}
                 navigation
                 spaceBetween={50}
                 slidesPerView={1}
-                style={{ padding: "4rem 0" }}
+                style={{ padding: "2.5rem 0 3rem 0" }}
             >
                 {testimonials.map((testimonial, index) => (
                     <SwiperSlide key={index} style={{ textAlign: "center" }}>
-                        <Container>
-                            <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>&ldquo;</div>
-                            <p style={{ fontSize: "1.25rem", fontStyle: "italic" }}>
+                        <Container style={{ maxWidth: "820px" }}>
+                            <div style={{ fontSize: "2.5rem", color: "#f1593a", lineHeight: 1, marginBottom: "0.75rem" }}>&ldquo;</div>
+                            <p style={{ fontSize: "clamp(1.02rem, 1.6vw, 1.22rem)", fontStyle: "italic", lineHeight: "1.8", color: "#f8fafc", margin: "0 auto", maxWidth: "720px" }}>
                                 {testimonial.text}
                             </p>
-                            <p style={{ marginTop: "1rem", fontWeight: "bold" }}>
-                                - {testimonial.author}
+                            <p style={{ marginTop: "1.25rem", fontWeight: "600", fontSize: "clamp(0.92rem, 1.1vw, 1rem)", letterSpacing: "0.4px", color: "#cbd5e1" }}>
+                                — {testimonial.author}
                             </p>
-                            <div className="pt-4" style={{ fontSize: "3rem", marginTop: "1rem" }}>&rdquo;</div>
+                            <div style={{ fontSize: "2.5rem", color: "#f1593a", lineHeight: 1, marginTop: "0.75rem" }}>&rdquo;</div>
                         </Container>
                     </SwiperSlide>
                 ))}

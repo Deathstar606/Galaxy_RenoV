@@ -17,8 +17,8 @@ function Footer() {
       {/* Top Banner Accent */}
       <div style={{ backgroundColor: "#b61414", height: "4px" }}></div>
 
-      <Container className="pt-5 pb-4" style={{ maxWidth: "88%", paddingTop: "4.5rem !important" }}>
-        <Row className="gy-4 mb-4 pt-4">
+      <Container className="pt-4 pb-4" style={{ maxWidth: "88%" }}>
+        <Row className="gy-4 mb-4 pt-3">
           {/* Brand Info & Mission */}
           <Col lg={4} md={6} className="mb-4 mb-lg-0 text-start">
             <h4
@@ -105,18 +105,18 @@ function Footer() {
           </Col>
 
           {/* Quick Navigation Links */}
-          <Col lg={2} md={6} xs={6} className="mb-4 mb-lg-0 text-start">
+          <Col lg={2} md={6} xs={12} sm={6} className="mb-4 mb-lg-0 text-start">
             <h5
-              className="fw-semibold mb-3"
-              style={{ color: "#00084c", fontSize: "1.1rem" }}
+              className="fw-bold mb-3"
+              style={{ color: "#00084c", fontSize: "1.05rem", letterSpacing: "0.2px" }}
             >
               Quick Links
             </h5>
-            <ul className="list-unstyled" style={{ fontSize: "0.95rem" }}>
+            <ul className="list-unstyled" style={{ fontSize: "0.93rem" }}>
               <li className="mb-2">
                 <Link
                   to="/home"
-                  style={{ color: "#2d3748", textDecoration: "none", fontWeight: "500" }}
+                  style={{ color: "#334155", textDecoration: "none", fontWeight: "500" }}
                 >
                   Home
                 </Link>
@@ -124,7 +124,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="/home/homed"
-                  style={{ color: "#2d3748", textDecoration: "none", fontWeight: "500" }}
+                  style={{ color: "#334155", textDecoration: "none", fontWeight: "500" }}
                 >
                   Tool Rental
                 </Link>
@@ -132,7 +132,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="/home/aboutus"
-                  style={{ color: "#2d3748", textDecoration: "none", fontWeight: "500" }}
+                  style={{ color: "#334155", textDecoration: "none", fontWeight: "500" }}
                 >
                   About Us
                 </Link>
@@ -140,7 +140,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="/home/contactus"
-                  style={{ color: "#2d3748", textDecoration: "none", fontWeight: "500" }}
+                  style={{ color: "#334155", textDecoration: "none", fontWeight: "500" }}
                 >
                   Book Service
                 </Link>
@@ -148,7 +148,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="/home/clientdash"
-                  style={{ color: "#2d3748", textDecoration: "none", fontWeight: "500" }}
+                  style={{ color: "#334155", textDecoration: "none", fontWeight: "500" }}
                 >
                   Track Order
                 </Link>
@@ -157,40 +157,54 @@ function Footer() {
           </Col>
 
           {/* Service Area & Availability */}
-          <Col lg={3} md={6} xs={6} className="mb-4 mb-lg-0 text-start">
+          <Col lg={3} md={6} xs={12} sm={6} className="mb-4 mb-lg-0 text-start">
             <h5
-              className="fw-semibold mb-3"
-              style={{ color: "#00084c", fontSize: "1.1rem" }}
+              className="fw-bold mb-3"
+              style={{ color: "#00084c", fontSize: "1.05rem", letterSpacing: "0.2px" }}
             >
               Service Area & Hours
             </h5>
             <p
               style={{
                 color: "#333a42",
-                fontSize: "0.95rem",
+                fontSize: "0.93rem",
                 lineHeight: "1.6",
               }}
-              className="mb-2"
+              className="mb-3"
             >
               Proudly serving <strong>Toronto, Scarborough, the GTA</strong>,
               and surrounding areas.
             </p>
             <div
-              className="d-flex align-items-center gap-2 mb-2"
-              style={{ color: "#2d3748", fontSize: "0.92rem" }}
+              className="d-flex align-items-center gap-2 mb-2 text-nowrap"
+              style={{
+                color: "#2d3748",
+                fontSize: "clamp(0.85rem, 1vw, 0.92rem)",
+                whiteSpace: "nowrap",
+                flexWrap: "nowrap",
+              }}
             >
               <FaClock className="text-secondary flex-shrink-0" />
-              <span className="fw-medium">Available 7 Days a Week</span>
+              <span className="fw-medium" style={{ whiteSpace: "nowrap" }}>
+                Available 7 Days a Week
+              </span>
             </div>
             <div
-              className="d-flex align-items-center gap-2"
-              style={{ color: "#2d3748", fontSize: "0.92rem" }}
+              className="d-flex align-items-center gap-2 text-nowrap"
+              style={{
+                color: "#2d3748",
+                fontSize: "clamp(0.85rem, 1vw, 0.92rem)",
+                whiteSpace: "nowrap",
+                flexWrap: "nowrap",
+              }}
             >
               <FaMapMarkerAlt
                 className="text-danger flex-shrink-0"
                 style={{ color: "#b61414" }}
               />
-              <span className="fw-medium">Scarborough, ON & GTA</span>
+              <span className="fw-medium" style={{ whiteSpace: "nowrap" }}>
+                Scarborough, ON & GTA
+              </span>
             </div>
           </Col>
 

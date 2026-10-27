@@ -109,7 +109,17 @@ const ClientDashboard = () => {
 
   return (
     <Container className="mt-5" style={{ minHeight: "40vh" }}>
-      <h2 className="mb-5 text-center">My Rented Tools</h2>
+      <h2
+        className="mb-4 text-center"
+        style={{
+          fontSize: "clamp(1.8rem, 3.2vw, 2.4rem)",
+          fontWeight: "800",
+          color: "#00084c",
+          letterSpacing: "-0.015em",
+        }}
+      >
+        My Rented Tools
+      </h2>
       <Row>
         {rentals.map((rent, index) => (
           <Col md={4} key={index} className="mb-4">

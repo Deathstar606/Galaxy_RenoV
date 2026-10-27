@@ -2,7 +2,6 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: Arial, sans-serif;
 }
 
 .burger-menu {
@@ -68,7 +67,16 @@ body, html {
 .burg-menu {
   text-decoration: none;
   color: #00084c;
-  font-size: 34px;
+  font-size: clamp(24px, 4.5vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.burg-menu:hover {
+  color: #b61414;
+  transform: translateX(4px);
 }
 
 .burg-menu.active {

@@ -82,7 +82,7 @@ const Navbar = () => {
       <div>
         <BootstrapNavbar light expand="md">
           <NavbarBrand href="https://www.galaxyhomesolutions.ca/#/home">
-            <img className="logo" src={logo} />
+            <img className="logo" src={logo} alt="Galaxy Home Solutions Logo" />
           </NavbarBrand>
           <MediaQuery maxWidth={1279}>
             <Burger scrollFunc={handleClick} />
@@ -94,9 +94,10 @@ const Navbar = () => {
               >
                 <Link
                   style={{
-                    color: "black",
-                    fontSize: "18px",
-                    fontWeight: "500",
+                    color: "#0f172a",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    letterSpacing: "0.2px",
                     textDecoration: "none",
                   }}
                   to="/home/contactus"
@@ -107,9 +108,10 @@ const Navbar = () => {
               <NavItem className="nav-ele">
                 <LinkScroll
                   style={{
-                    color: "black",
-                    fontSize: "18px",
-                    fontWeight: "500",
+                    color: "#0f172a",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    letterSpacing: "0.2px",
                     cursor: "pointer",
                   }}
                   to="freest"
@@ -127,9 +129,10 @@ const Navbar = () => {
               >
                 <Link
                   style={{
-                    color: "black",
-                    fontSize: "18px",
-                    fontWeight: "500",
+                    color: "#0f172a",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    letterSpacing: "0.2px",
                     textDecoration: "none",
                   }}
                   to="/home/homed"
@@ -142,9 +145,10 @@ const Navbar = () => {
               >
                 <Link
                   style={{
-                    color: "black",
-                    fontSize: "18px",
-                    fontWeight: "500",
+                    color: "#0f172a",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    letterSpacing: "0.2px",
                     textDecoration: "none",
                   }}
                   to="/home/aboutus"
@@ -155,9 +159,10 @@ const Navbar = () => {
               <NavItem className="nav-ele">
                 <LinkScroll
                   style={{
-                    color: "black",
-                    fontSize: "18px",
-                    fontWeight: "500",
+                    color: "#0f172a",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    letterSpacing: "0.2px",
                     cursor: "pointer",
                   }}
                   to="serve"
@@ -177,9 +182,10 @@ const Navbar = () => {
                 >
                   <Link
                     style={{
-                      color: "black",
-                      fontSize: "18px",
-                      fontWeight: "500",
+                      color: "#0f172a",
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      letterSpacing: "0.2px",
                       textDecoration: "none",
                       position: "relative", // Ensures the badge positions relative to the text
                       display: "inline-block",

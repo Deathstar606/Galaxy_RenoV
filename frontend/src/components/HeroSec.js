@@ -59,44 +59,78 @@ const HeroSec = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
                 style={{
-                  padding: "20vh 5vh",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  minHeight: "52vh",
+                  padding: "3.5rem 1.75rem 2.5rem 1.75rem",
                   position: "relative",
-                  height: "50vh", 
+                  textAlign: "center",
                 }}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
               >
+                <div
+                  style={{
+                    color: "#f1593a",
+                    fontSize: "0.78rem",
+                    fontWeight: "700",
+                    letterSpacing: "2px",
+                    textTransform: "uppercase",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  Galaxy Home Solutions
+                </div>
                 <motion.h1
                   className="text-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   style={{
                     ...style,
-                    paddingLeft: "10px",
                     transition: "transform 0.1s ease",
-                    color: "#fff",
+                    color: "#ffffff",
+                    fontSize: "clamp(2rem, 6.5vw, 2.5rem)",
+                    fontWeight: "800",
+                    letterSpacing: "-0.02em",
+                    lineHeight: "1.15",
+                    marginBottom: "0.75rem",
                   }}
                 >
                   {heading[index]}
                 </motion.h1>
-                <motion.p
-                  className="text-white text-center"
+                <motion.div
+                  className="text-center"
                   style={{
                     ...style,
-                    paddingLeft: "10px",
                     transition: "transform 0.1s ease",
+                    color: "rgba(255, 255, 255, 0.88)",
+                    fontSize: "clamp(0.95rem, 3.5vw, 1.1rem)",
+                    fontWeight: "400",
+                    lineHeight: "1.55",
+                    maxWidth: "360px",
+                    marginBottom: "1.25rem",
                   }}
                 >
                   <StaggeredText key={texts[index]} text={texts[index]} />
-                </motion.p>
+                </motion.div>
                 <div className="d-flex justify-content-center">
-                  <div className="mt-3 butt" style={{ display: "inline-block" }}>
+                  <div
+                    className="butt"
+                    style={{
+                      display: "inline-block",
+                      fontSize: "0.95rem",
+                      fontWeight: "600",
+                      letterSpacing: "0.5px",
+                    }}
+                  >
                     {index === 2 ? (
-                      <Scroll to={links[index]}>
+                      <Scroll to={links[index]} style={{ textDecoration: "none", color: "inherit" }}>
                         {butts[index]}
                       </Scroll>
                     ) : (
-                      <Link to={links[index]}>
+                      <Link to={links[index]} style={{ textDecoration: "none", color: "inherit" }}>
                         {butts[index]}
                       </Link>
                     )}
@@ -108,27 +142,31 @@ const HeroSec = () => {
               onClick={handlePrev}
               style={{
                 position: "absolute",
-                left: "10px",
-                bottom: "20px",
+                left: "12px",
+                bottom: "16px",
                 background: "none",
                 border: "none",
                 cursor: "pointer",
+                opacity: 0.85,
               }}
+              aria-label="Previous slide"
             >
-              <FaRegArrowAltCircleLeft color="#ffffff" size={30} />
+              <FaRegArrowAltCircleLeft color="#ffffff" size={28} />
             </button>
             <button
               onClick={handleNext}
               style={{
                 position: "absolute",
-                right: "10px",
-                bottom: "20px",
+                right: "12px",
+                bottom: "16px",
                 background: "none",
                 border: "none",
                 cursor: "pointer",
+                opacity: 0.85,
               }}
+              aria-label="Next slide"
             >
-              <FaRegArrowAltCircleRight color="#ffffff" size={30} />
+              <FaRegArrowAltCircleRight color="#ffffff" size={28} />
             </button>
           </Col>
 
@@ -136,7 +174,7 @@ const HeroSec = () => {
             md={6}
             xs={12}
             className="p-0 d-flex justify-content-center align-items-center"
-            style={{ position: "relative", minHeight: "50vh" }}
+            style={{ position: "relative", minHeight: "48vh" }}
           >
             <motion.div
               key={index}
@@ -167,39 +205,74 @@ const HeroSec = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
               style={{
-                paddingTop: "30vh",  // Top padding of 30vh
-                paddingLeft: "20vh", // Left padding of 20px
-                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "flex-start",
+                minHeight: "100vh",
                 height: "100vh",
+                padding: "3rem clamp(2.5rem, 5.5vw, 6rem)",
+                position: "relative",
               }}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
+              <div
+                style={{
+                  color: "#f1593a",
+                  fontSize: "clamp(0.8rem, 1.1vw, 0.95rem)",
+                  fontWeight: "700",
+                  letterSpacing: "3px",
+                  textTransform: "uppercase",
+                  marginBottom: "0.85rem",
+                  paddingLeft: "4px",
+                }}
+              >
+                Galaxy Home Solutions
+              </div>
               <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 style={{
                   ...style,
-                  paddingLeft: "10px",
                   transition: "transform 0.1s ease",
-                  color: "#fff",
+                  color: "#ffffff",
+                  fontSize: "clamp(2.4rem, 4.6vw, 3.8rem)",
+                  fontWeight: "800",
+                  letterSpacing: "-0.025em",
+                  lineHeight: "1.15",
+                  marginBottom: "1.15rem",
+                  paddingLeft: "4px",
                 }}
               >
                 {heading[index]}
               </motion.h1>
-              <motion.p
-                className="text-white"
+              <motion.div
                 style={{
                   ...style,
-                  paddingLeft: "10px",
                   transition: "transform 0.1s ease",
+                  color: "rgba(255, 255, 255, 0.88)",
+                  fontSize: "clamp(1.05rem, 1.8vw, 1.32rem)",
+                  fontWeight: "400",
+                  lineHeight: "1.65",
+                  maxWidth: "520px",
+                  marginBottom: "1.85rem",
+                  paddingLeft: "4px",
                 }}
               >
                 <StaggeredText key={texts[index]} text={texts[index]} />
-              </motion.p>
-              <div className="mt-3 butt" style={{ display: "inline-block" }}>  
+              </motion.div>
+              <div
+                className="butt"
+                style={{
+                  display: "inline-block",
+                  fontSize: "1.05rem",
+                  fontWeight: "600",
+                  letterSpacing: "0.5px",
+                }}
+              >  
                 {index === 2 ? (
-                  <Scroll to={links[index]}>
+                  <Scroll to={links[index]} style={{ textDecoration: "none", color: "inherit" }}>
                     {butts[index]}
                   </Scroll>
                   ) : (
@@ -220,9 +293,11 @@ const HeroSec = () => {
               background: "none",
               border: "none",
               cursor: "pointer",
+              opacity: 0.85,
             }}
+            aria-label="Previous slide"
           >
-            <FaRegArrowAltCircleLeft color="#ffffff" size={30} />
+            <FaRegArrowAltCircleLeft color="#ffffff" size={32} />
           </button>
         </Col>
         <Col md={6} xs={12} style={{position: "relative"}} className="p-0 d-flex justify-content-center align-items-center">
@@ -253,9 +328,11 @@ const HeroSec = () => {
               background: "none",
               border: "none",
               cursor: "pointer",
+              opacity: 0.85,
             }}
+            aria-label="Next slide"
           >
-            <FaRegArrowAltCircleRight color="#ffffff" size={30} />
+            <FaRegArrowAltCircleRight color="#ffffff" size={32} />
           </button>
         </Col>
       </Row>

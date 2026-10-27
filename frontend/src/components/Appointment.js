@@ -134,10 +134,19 @@ const AppointmentForm = () => {
         }}
       >
         <Container>
-          <h1 className="fw-bold mb-2">Book an Appointment</h1>
+          <h1
+            className="mb-2"
+            style={{
+              fontSize: "clamp(2rem, 3.8vw, 2.75rem)",
+              fontWeight: "800",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Book an Appointment
+          </h1>
           <p
-            className="text-light mx-auto mb-0"
-            style={{ maxWidth: "650px", opacity: 0.9, fontSize: "1.05rem" }}
+            className="text-light mx-auto mb-0 px-2"
+            style={{ maxWidth: "650px", opacity: 0.9, fontSize: "clamp(0.95rem, 1.3vw, 1.05rem)", lineHeight: "1.6" }}
           >
             Tell us about your home improvement or repair project and get a quick, personalized consultation & quote.
           </p>

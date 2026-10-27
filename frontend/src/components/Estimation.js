@@ -67,15 +67,24 @@ const Estimation = () => {
           justifyContent: "center",
         }}
       >
-        <div className="pl-3 pr-3 est-container" id="freest">
-          <h1 className="text-center p-4">
+        <div className="pl-3 pr-3 est-container my-4" id="freest">
+          <h1
+            className="text-center mb-4"
+            style={{
+              fontSize: "clamp(2rem, 3.8vw, 2.75rem)",
+              fontWeight: "800",
+              letterSpacing: "-0.02em",
+              color: "#00084c",
+            }}
+          >
             <StaggeredText text={"Get An Estimation"} />
           </h1>
           <Row
             style={{
-              border: "1px solid grey",
-              borderRadius: "15px",
-              padding: "20px",
+              border: "1px solid #e2e8f0",
+              borderRadius: "18px",
+              padding: "24px",
+              boxShadow: "0 6px 18px rgba(0, 0, 0, 0.05)",
             }}
           >
             <Col md={6} className="d-flex justify-content-center">
@@ -110,26 +119,29 @@ const Estimation = () => {
                   </DropdownMenu>
                 </Dropdown>
                 <div className="mt-3">
-                  <h5>Selected Services:</h5>
+                  <h5 style={{ fontWeight: "700", color: "#00084c", fontSize: "1.05rem" }}>
+                    Selected Services:
+                  </h5>
                   {selectedServices.length > 0 ? (
                     selectedServices.map((service) => (
                       <div
                         key={service.id}
                         className="d-flex justify-content-center align-items-center"
                       >
-                        <span className="mt-1">
+                        <span className="mt-1" style={{ fontWeight: "500", fontSize: "0.95rem" }}>
                           {service.label} - ${service.price}
                         </span>
                         <span
                           className="ml-2"
                           onClick={() => handleRemoveService(service.id)}
+                          style={{ cursor: "pointer" }}
                         >
                           <MdOutlineCancel color="#00084c" size={20} />
                         </span>
                       </div>
                     ))
                   ) : (
-                    <p className="text-center pt-1">No services selected</p>
+                    <p className="text-center pt-1 text-muted" style={{ fontSize: "0.92rem" }}>No services selected</p>
                   )}
                 </div>
               </div>
@@ -142,7 +154,9 @@ const Estimation = () => {
                 justifyContent: "center",
               }}
             >
-              <h5 className="mt-3">Subtotal: ${subtotal}</h5>
+              <h4 className="mt-3" style={{ fontWeight: "800", color: "#00084c", fontSize: "clamp(1.2rem, 2vw, 1.45rem)" }}>
+                Subtotal: ${subtotal}
+              </h4>
             </Col>
           </Row>
         </div>

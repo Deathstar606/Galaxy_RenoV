@@ -44,15 +44,15 @@ function ServiceCardContent({ service }) {
           <CardImg src={service.mainImg} alt={service.name} />
         </div>
       </motion.div>
-      <p
+      <h5
         className="text-center pt-3 mb-2"
-        style={{ fontWeight: "bold", fontSize: "1.1rem" }}
+        style={{ fontWeight: "700", fontSize: "1.15rem", color: "#00084c", letterSpacing: "-0.01em" }}
       >
         {service.name}
-      </p>
+      </h5>
       <div
-        className="text-center text-muted"
-        style={{ fontSize: "0.92rem", lineHeight: "1.5" }}
+        className="text-center"
+        style={{ fontSize: "0.92rem", lineHeight: "1.6", color: "#475569" }}
       >
         {service.description}
       </div>
@@ -75,10 +75,30 @@ function Service({ services }) {
 
   return (
     <>
-      <h1 className="text-center mt-5 pt-4" id="serve">
-        <StaggeredText text={"Our Services"} />
-      </h1>
-      <p className="text-center mt-2 pb-4 text-muted">View our services</p>
+      <div className="text-center mt-5 pt-4" id="serve">
+        <h1
+          className="text-center mb-2"
+          style={{
+            fontSize: "clamp(2rem, 3.8vw, 2.75rem)",
+            fontWeight: "800",
+            letterSpacing: "-0.02em",
+            color: "#00084c",
+          }}
+        >
+          <StaggeredText text={"Our Services"} />
+        </h1>
+        <p
+          className="text-center mb-4 text-muted mx-auto px-3"
+          style={{
+            fontSize: "clamp(0.95rem, 1.3vw, 1.05rem)",
+            color: "#64748b",
+            maxWidth: "600px",
+            lineHeight: "1.55",
+          }}
+        >
+          Reliable, high-quality home renovations and handyman solutions tailored to your needs
+        </p>
+      </div>
       <Container className="mb-5">
         {serviceList.length === 0 ? (
           <h3 className="text-center w-100 mt-5 mb-5">Services Loading...</h3>
