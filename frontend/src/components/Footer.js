@@ -20,16 +20,16 @@ function Footer() {
       <Container className="pt-4 pb-4" style={{ maxWidth: "88%" }}>
         <Row className="gy-4 mb-4 pt-3">
           {/* Brand Info & Mission */}
-          <Col lg={4} md={6} className="mb-4 mb-lg-0 text-start">
+          <Col lg={4} md={6} className="mb-4 mb-lg-0 text-left">
             <h4
-              className="fw-bold mb-3 d-flex align-items-center"
-              style={{ color: "#00084c", letterSpacing: "0.5px" }}
+              className="font-weight-bold mb-3 d-flex align-items-center"
+              style={{ color: "#00084c", letterSpacing: "0.5px", gap: "10px" }}
             >
               <FaTools
-                className="me-2 text-danger"
+                className="text-danger flex-shrink-0"
                 style={{ color: "#b61414" }}
-              />{" "}
-              Galaxy Home Solutions
+              />
+              <span>Galaxy Home Solutions</span>
             </h4>
             <p
               style={{
@@ -42,7 +42,7 @@ function Footer() {
               small repairs and installations to complete home renovations, we
               deliver quality craftsmanship with honesty and peace of mind.
             </p>
-            <div className="d-flex gap-3 mt-3">
+            <div className="d-flex mt-3" style={{ gap: "12px" }}>
               <a
                 href="https://www.facebook.com/profile.php?id=61574817508133"
                 target="_blank"
@@ -105,9 +105,9 @@ function Footer() {
           </Col>
 
           {/* Quick Navigation Links */}
-          <Col lg={2} md={6} xs={12} sm={6} className="mb-4 mb-lg-0 text-start">
+          <Col lg={2} md={6} xs={12} sm={6} className="mb-4 mb-lg-0 text-left">
             <h5
-              className="fw-bold mb-3"
+              className="font-weight-bold mb-3"
               style={{ color: "#00084c", fontSize: "1.05rem", letterSpacing: "0.2px" }}
             >
               Quick Links
@@ -157,9 +157,9 @@ function Footer() {
           </Col>
 
           {/* Service Area & Availability */}
-          <Col lg={3} md={6} xs={12} sm={6} className="mb-4 mb-lg-0 text-start">
+          <Col lg={3} md={6} xs={12} sm={6} className="mb-4 mb-lg-0 text-left">
             <h5
-              className="fw-bold mb-3"
+              className="font-weight-bold mb-3"
               style={{ color: "#00084c", fontSize: "1.05rem", letterSpacing: "0.2px" }}
             >
               Service Area & Hours
@@ -176,66 +176,78 @@ function Footer() {
               and surrounding areas.
             </p>
             <div
-              className="d-flex align-items-center gap-2 mb-2 text-nowrap"
+              className="d-flex align-items-center mb-2 text-nowrap"
               style={{
                 color: "#2d3748",
                 fontSize: "clamp(0.85rem, 1vw, 0.92rem)",
                 whiteSpace: "nowrap",
                 flexWrap: "nowrap",
+                gap: "10px",
               }}
             >
               <FaClock className="text-secondary flex-shrink-0" />
-              <span className="fw-medium" style={{ whiteSpace: "nowrap" }}>
+              <span style={{ whiteSpace: "nowrap", fontWeight: "500" }}>
                 Available 7 Days a Week
               </span>
             </div>
             <div
-              className="d-flex align-items-center gap-2 text-nowrap"
+              className="d-flex align-items-center text-nowrap"
               style={{
                 color: "#2d3748",
                 fontSize: "clamp(0.85rem, 1vw, 0.92rem)",
                 whiteSpace: "nowrap",
                 flexWrap: "nowrap",
+                gap: "10px",
               }}
             >
               <FaMapMarkerAlt
                 className="text-danger flex-shrink-0"
                 style={{ color: "#b61414" }}
               />
-              <span className="fw-medium" style={{ whiteSpace: "nowrap" }}>
+              <span style={{ whiteSpace: "nowrap", fontWeight: "500" }}>
                 Scarborough, ON & GTA
               </span>
             </div>
           </Col>
 
           {/* Contact Details */}
-          <Col lg={3} md={6} className="mb-4 mb-lg-0 text-start">
+          <Col lg={3} md={6} className="mb-4 mb-lg-0 text-left">
             <h5
-              className="fw-semibold mb-3"
+              className="font-weight-bold mb-3"
               style={{ color: "#00084c", fontSize: "1.1rem" }}
             >
               Contact Us
             </h5>
             <div
-              className="d-flex flex-column gap-2"
-              style={{ fontSize: "0.92rem" }}
+              className="d-flex flex-column"
+              style={{ fontSize: "0.92rem", gap: "8px" }}
             >
               <a
                 href="tel:4169976627"
-                style={{ color: "#2d3748", textDecoration: "none" }}
-                className="d-flex align-items-center gap-2 py-1 fw-medium"
+                style={{
+                  color: "#2d3748",
+                  textDecoration: "none",
+                  gap: "10px",
+                  fontWeight: "500",
+                }}
+                className="d-flex align-items-center py-1"
               >
-                <FaPhone style={{ color: "#b61414" }} />
+                <FaPhone style={{ color: "#b61414", flexShrink: 0 }} />
                 <span>416 997 6627 / 647 606 2540</span>
               </a>
               <a
                 href="mailto:solutionsgalaxyhome@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#2d3748", textDecoration: "none" }}
-                className="d-flex align-items-center gap-2 py-1 text-break fw-medium"
+                style={{
+                  color: "#2d3748",
+                  textDecoration: "none",
+                  gap: "10px",
+                  fontWeight: "500",
+                }}
+                className="d-flex align-items-center py-1 text-break"
               >
-                <FaEnvelope style={{ color: "#b61414" }} />
+                <FaEnvelope style={{ color: "#b61414", flexShrink: 0 }} />
                 <span>solutionsgalaxyhome@gmail.com</span>
               </a>
             </div>
@@ -265,7 +277,7 @@ function Footer() {
         />
 
         {/* Bottom Copyright */}
-        <Row className="align-items-center text-center text-md-start">
+        <Row className="align-items-center text-center text-md-left">
           <Col md={6} className="mb-2 mb-md-0">
             <p
               className="mb-0"
@@ -275,7 +287,7 @@ function Footer() {
               rights reserved.
             </p>
           </Col>
-          <Col md={6} className="text-center text-md-end">
+          <Col md={6} className="text-center text-md-right">
             <p
               className="mb-0"
               style={{ color: "#555d67", fontSize: "0.85rem" }}

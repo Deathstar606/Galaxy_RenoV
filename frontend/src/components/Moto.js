@@ -24,30 +24,37 @@ const motoItems = [
   },
 ];
 
-function MotoCard({ item, index }) {
+function MotoCard({ item, index, ready = true }) {
   const cardRef = useRef(null);
-  // useInView with { once: true, margin: "0px 0px -40px 0px" } precisely monitors each card's own bounding box
-  const isInView = useInView(cardRef, { once: true, margin: "0px 0px -40px 0px" });
+  // Require 20% of the card inside the viewport (with a 60px bottom inset) so mobile doesn't trigger off-screen
+  const inView = useInView(cardRef, {
+    once: true,
+    amount: 0.2,
+    margin: "0px 0px -60px 0px",
+  });
+  const isInView = ready && inView;
 
   return (
     <Col lg={4} md={4} xs={12} className="d-flex align-items-stretch mb-4 mb-md-0">
       <div ref={cardRef} className="w-100 d-flex">
         <motion.div
           className="w-100 d-flex"
-          initial={{ y: 50, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+          initial={{ y: 60, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }}
           transition={{
-            duration: 0.75,
+            duration: 0.7,
             ease: "easeOut",
             delay: typeof window !== "undefined" && window.innerWidth >= 768 ? index * 0.15 : 0.05,
           }}
         >
           <Card
-            className="w-100 shadow-sm border-0 d-flex flex-column"
+            className="w-100 d-flex flex-column"
             style={{
               borderRadius: "20px",
               overflow: "hidden",
               backgroundColor: "#ffffff",
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 6px 18px rgba(0, 0, 0, 0.05)",
               transition: "transform 0.3s ease, box-shadow 0.3s ease",
             }}
           >
@@ -84,10 +91,12 @@ function MotoCard({ item, index }) {
                 {item.title}
               </h5>
               <CardText
-                className="text-center text-muted flex-grow-1 mb-0"
+                className="text-center flex-grow-1 mb-0"
                 style={{
-                  fontSize: "0.95rem",
-                  lineHeight: "1.65",
+                  color: "#2d3748",
+                  fontSize: "0.96rem",
+                  fontWeight: "400",
+                  lineHeight: "1.68",
                 }}
               >
                 {item.text}
@@ -100,12 +109,17 @@ function MotoCard({ item, index }) {
   );
 }
 
-function Moto() {
+function Moto({ ready = true }) {
   return (
     <Container className="my-5">
       <Row className="g-4 d-flex align-items-stretch">
         {motoItems.map((item, index) => (
-          <MotoCard key={index} item={item} index={index} />
+          <MotoCard
+            key={`${index}-${ready ? "ready" : "pending"}`}
+            item={item}
+            index={index}
+            ready={ready}
+          />
         ))}
       </Row>
     </Container>

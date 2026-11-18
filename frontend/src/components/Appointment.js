@@ -146,9 +146,15 @@ const AppointmentForm = () => {
           </h1>
           <p
             className="text-light mx-auto mb-0 px-2"
-            style={{ maxWidth: "650px", opacity: 0.9, fontSize: "clamp(0.95rem, 1.3vw, 1.05rem)", lineHeight: "1.6" }}
+            style={{
+              maxWidth: "650px",
+              opacity: 0.9,
+              fontSize: "clamp(0.95rem, 1.3vw, 1.05rem)",
+              lineHeight: "1.6",
+            }}
           >
-            Tell us about your home improvement or repair project and get a quick, personalized consultation & quote.
+            Tell us about your home improvement or repair project and get a
+            quick, personalized consultation & quote.
           </p>
         </Container>
       </div>
@@ -178,15 +184,23 @@ const AppointmentForm = () => {
                   <h3 className="fw-bold mb-1" style={{ color: "#00084c" }}>
                     Project & Contact Information
                   </h3>
-                  <p className="text-muted mb-0" style={{ fontSize: "0.92rem" }}>
-                    Please fill out the form below. We usually respond within a few hours.
+                  <p
+                    className="text-muted mb-0"
+                    style={{ fontSize: "0.92rem" }}
+                  >
+                    Please fill out the form below. We usually respond within a
+                    few hours.
                   </p>
                 </div>
 
                 <Row className="gy-3">
                   <Col md={6} xs={12}>
                     <FormGroup>
-                      <Label for="name" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                      <Label
+                        for="name"
+                        className="fw-semibold text-secondary"
+                        style={{ fontSize: "0.9rem" }}
+                      >
                         Full Name <span className="text-danger">*</span>
                       </Label>
                       <Input
@@ -204,7 +218,11 @@ const AppointmentForm = () => {
                   </Col>
                   <Col md={6} xs={12}>
                     <FormGroup>
-                      <Label for="phone" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                      <Label
+                        for="phone"
+                        className="fw-semibold text-secondary"
+                        style={{ fontSize: "0.9rem" }}
+                      >
                         Phone Number <span className="text-danger">*</span>
                       </Label>
                       <Input
@@ -225,7 +243,11 @@ const AppointmentForm = () => {
                 <Row className="gy-3">
                   <Col md={6} xs={12}>
                     <FormGroup>
-                      <Label for="email" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                      <Label
+                        for="email"
+                        className="fw-semibold text-secondary"
+                        style={{ fontSize: "0.9rem" }}
+                      >
                         Email Address <span className="text-danger">*</span>
                       </Label>
                       <Input
@@ -243,8 +265,13 @@ const AppointmentForm = () => {
                   </Col>
                   <Col md={6} xs={12}>
                     <FormGroup>
-                      <Label for="address" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
-                        Service Address / Location <span className="text-danger">*</span>
+                      <Label
+                        for="address"
+                        className="fw-semibold text-secondary"
+                        style={{ fontSize: "0.9rem" }}
+                      >
+                        Service Address / Location{" "}
+                        <span className="text-danger">*</span>
                       </Label>
                       <Input
                         type="text"
@@ -264,11 +291,20 @@ const AppointmentForm = () => {
                 <Row className="gy-3">
                   <Col md={12}>
                     <FormGroup>
-                      <Label for="description" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
-                        Project Details & Description <span className="text-danger">*</span>
+                      <Label
+                        for="description"
+                        className="fw-semibold text-secondary"
+                        style={{ fontSize: "0.9rem" }}
+                      >
+                        Project Details & Description{" "}
+                        <span className="text-danger">*</span>
                       </Label>
                       <Input
-                        style={{ height: "120px", borderRadius: "10px", borderColor: "#cbd5e1" }}
+                        style={{
+                          height: "120px",
+                          borderRadius: "10px",
+                          borderColor: "#cbd5e1",
+                        }}
                         type="textarea"
                         name="description"
                         id="description"
@@ -285,7 +321,11 @@ const AppointmentForm = () => {
                 <Row className="gy-3">
                   <Col md={12}>
                     <FormGroup>
-                      <Label for="image" className="fw-semibold text-secondary" style={{ fontSize: "0.9rem" }}>
+                      <Label
+                        for="image"
+                        className="fw-semibold text-secondary"
+                        style={{ fontSize: "0.9rem" }}
+                      >
                         Attach Photo (Optional)
                       </Label>
                       <div
@@ -307,7 +347,8 @@ const AppointmentForm = () => {
                           style={{ borderRadius: "8px" }}
                         />
                         <small className="text-muted">
-                          Upload clear pictures of the repair area or items to help us provide an accurate estimate.
+                          Upload clear pictures of the repair area or items to
+                          help us provide an accurate estimate.
                         </small>
                       </div>
                     </FormGroup>
@@ -319,7 +360,10 @@ const AppointmentForm = () => {
                     <Col md={12} className="text-center">
                       <div
                         className="p-2 d-inline-block bg-light"
-                        style={{ borderRadius: "12px", border: "1px solid #e2e8f0" }}
+                        style={{
+                          borderRadius: "12px",
+                          border: "1px solid #e2e8f0",
+                        }}
                       >
                         <img
                           src={imagePreview}
@@ -332,7 +376,9 @@ const AppointmentForm = () => {
                           }}
                         />
                         <div className="mt-1">
-                          <small className="text-success fw-semibold">Photo Attached</small>
+                          <small className="text-success fw-semibold">
+                            Photo Attached
+                          </small>
                         </div>
                       </div>
                     </Col>
@@ -340,8 +386,12 @@ const AppointmentForm = () => {
                 )}
 
                 {isSubmitting && (
-                  <div className="alert alert-info py-2 px-3 text-center my-3" style={{ borderRadius: "10px" }}>
-                    Uploading details... {uploadProgress > 0 ? `${uploadProgress}%` : "Processing"}
+                  <div
+                    className="alert alert-info py-2 px-3 text-center my-3"
+                    style={{ borderRadius: "10px" }}
+                  >
+                    Uploading details...{" "}
+                    {uploadProgress > 0 ? `${uploadProgress}%` : "Processing"}
                   </div>
                 )}
 
@@ -369,7 +419,10 @@ const AppointmentForm = () => {
       </Container>
 
       {/* Contact Info Feature Section */}
-      <div style={{ backgroundColor: "#00084c", color: "white" }} className="py-5">
+      <div
+        style={{ backgroundColor: "#00084c", color: "white" }}
+        className="py-5"
+      >
         <Container style={{ maxWidth: "88%" }}>
           <Row className="gy-4 align-items-center">
             <Col
@@ -402,8 +455,18 @@ const AppointmentForm = () => {
                 <h3 className="fw-bold mb-3" style={{ color: "#ffffff" }}>
                   Need Immediate Assistance?
                 </h3>
-                <p className="text-light" style={{ opacity: 0.9, lineHeight: "1.7", fontSize: "0.98rem" }}>
-                  Have an urgent question, need a quote right away, or prefer speaking directly with our craftsman? We take pride in rapid responses, clear transparent communication, and dependable service across the Greater Toronto Area.
+                <p
+                  className="text-light"
+                  style={{
+                    opacity: 0.9,
+                    lineHeight: "1.7",
+                    fontSize: "0.98rem",
+                  }}
+                >
+                  Have an urgent question, need a quote right away, or prefer
+                  speaking directly with our craftsman? We take pride in rapid
+                  responses, clear transparent communication, and dependable
+                  service across the Greater Toronto Area.
                 </p>
                 <div className="mt-4 pt-2">
                   <a
@@ -415,6 +478,7 @@ const AppointmentForm = () => {
                       style={{
                         width: "42px",
                         height: "42px",
+                        marginRight: "8px",
                         borderRadius: "50%",
                         backgroundColor: "#b61414",
                         display: "flex",
@@ -425,8 +489,15 @@ const AppointmentForm = () => {
                       <FaPhone size={18} />
                     </div>
                     <div>
-                      <div className="small text-light" style={{ opacity: 0.8 }}>Call or Text</div>
-                      <div className="fw-bold fs-6">416 997 6627 / 647 606 2540</div>
+                      <div
+                        className="small text-light"
+                        style={{ opacity: 0.8 }}
+                      >
+                        Call or Text
+                      </div>
+                      <div className="fw-bold fs-6">
+                        416 997 6627 / 647 606 2540
+                      </div>
                     </div>
                   </a>
 
@@ -441,6 +512,7 @@ const AppointmentForm = () => {
                       style={{
                         width: "42px",
                         height: "42px",
+                        marginRight: "8px",
                         borderRadius: "50%",
                         backgroundColor: "#b61414",
                         display: "flex",
@@ -451,8 +523,15 @@ const AppointmentForm = () => {
                       <FaEnvelope size={18} />
                     </div>
                     <div>
-                      <div className="small text-light" style={{ opacity: 0.8 }}>Email Inquiry</div>
-                      <div className="fw-bold fs-6 text-break">solutionsgalaxyhome@gmail.com</div>
+                      <div
+                        className="small text-light"
+                        style={{ opacity: 0.8 }}
+                      >
+                        Email Inquiry
+                      </div>
+                      <div className="fw-bold fs-6 text-break">
+                        solutionsgalaxyhome@gmail.com
+                      </div>
                     </div>
                   </a>
 
@@ -461,6 +540,7 @@ const AppointmentForm = () => {
                       style={{
                         width: "42px",
                         height: "42px",
+                        marginRight: "8px",
                         borderRadius: "50%",
                         backgroundColor: "rgba(255, 255, 255, 0.15)",
                         display: "flex",
@@ -471,8 +551,15 @@ const AppointmentForm = () => {
                       <FaMapMarkerAlt size={18} className="text-light" />
                     </div>
                     <div>
-                      <div className="small text-light" style={{ opacity: 0.8 }}>Service Area</div>
-                      <div className="fw-bold fs-6">Scarborough, Toronto & GTA (7 Days a Week)</div>
+                      <div
+                        className="small text-light"
+                        style={{ opacity: 0.8 }}
+                      >
+                        Service Area
+                      </div>
+                      <div className="fw-bold fs-6">
+                        Scarborough, Toronto & GTA (7 Days a Week)
+                      </div>
                     </div>
                   </div>
                 </div>

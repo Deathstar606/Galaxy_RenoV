@@ -101,7 +101,12 @@ function Service({ services }) {
       </div>
       <Container className="mb-5">
         {serviceList.length === 0 ? (
-          <h3 className="text-center w-100 mt-5 mb-5">Services Loading...</h3>
+          <div
+            className="d-flex align-items-center justify-content-center w-100"
+            style={{ minHeight: "380px" }}
+          >
+            <h3 className="text-center mb-0">Services Loading...</h3>
+          </div>
         ) : (
           <>
             {/* Desktop / Tablet layout: 4 per row with bottom spacing */}

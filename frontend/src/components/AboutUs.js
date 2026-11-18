@@ -41,7 +41,7 @@ function About() {
             </motion.div>
           </Col>
           <Col lg={6} md={12} className="d-flex align-items-center">
-            <div className="home-butt ps-lg-4">
+            <div className="home-butt pl-lg-4">
               <div
                 style={{
                   color: "#f1593a",
@@ -90,7 +90,10 @@ function About() {
               </p>
 
               {/* Styled Key Highlights */}
-              <div className="d-flex flex-column flex-sm-row gap-2 gap-sm-3 mb-4">
+              <div
+                className="d-flex flex-column flex-sm-row mb-4"
+                style={{ gap: "12px" }}
+              >
                 <div
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.07)",

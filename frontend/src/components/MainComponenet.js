@@ -55,7 +55,7 @@ const Home = ({ services }) => (
     <HeroSec />
     <Service services={services} />
     <Estimation />
-    <Moto />
+    <Moto ready={!services?.isLoading} />
     <Testi />
   </motion.div>
 );
