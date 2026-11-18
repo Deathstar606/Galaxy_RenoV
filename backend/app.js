@@ -28,9 +28,7 @@ var mailRouter = require("./routes/mailRouter");
 const corsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins = [
-      "https://www.galaxyhomesolutions.ca",
-      "https://galaxyreno-git-main-deathstar606s-projects.vercel.app",
-      "https://deathstar606.github.io",
+      "https://galaxyhomesolutions.ca",
       "http://localhost:3000",
     ];
     if (!origin || allowedOrigins.includes(origin)) {
